@@ -1,0 +1,21 @@
+swagger: '2.0'
+
+info:
+  title: Kaggle leaderboard site API
+  version: '1.0'
+  description: 'REST API interface for WIND service'
+
+basePath: /v1
+
+security: []
+paths:
+  /index:
+    get:
+      $handler: kaggle_leaderboard.views.main_page
+      produces:
+        - text/html
+  /stat:
+    get:
+      $handler: kaggle_leaderboard.views.stat
+      produces:
+        - application/json
