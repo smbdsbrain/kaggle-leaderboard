@@ -27,5 +27,3 @@ class Application(aioworkers_aiohttp.app.Application):
 
         self.kaggle_api = NoAuthKaggleApi(self.api_client)
 
-
-        pass

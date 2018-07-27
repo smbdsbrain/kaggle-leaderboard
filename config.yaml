@@ -9,6 +9,6 @@ app:
     /v1:
       include: api.yaml
 kaggle:
-  user: ;;
+  user: ''
   key: ''
   competition: 'asasssa'

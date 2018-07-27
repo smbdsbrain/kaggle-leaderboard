@@ -532,10 +532,46 @@ footer {
 }
 </style>
 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <script type="text/javascript">
 $(document).ready(function() {
 
-  var border = $('#personal-border');
+    elements_to_remove = [];
+
+    function timer_increment() {
+        console.log('okey');
+
+        $.ajax({
+          dataType: "json",
+          url: '/v1/stat',
+          success: function (data, error) {
+              console.log(data);
+
+
+              $('.leaderboard-body').empty()
+
+              $.each( data, function( key, val ) {
+                  elements_to_remove.push($('.leaderboard-body').append(
+                      $('<div class="leaderboard-row flex align-center"></div>').append(
+                          $('<div class="row-position"></div>').text(key + 1),
+                          $('<div class="row-collapse flex align-center"></div>').append(
+                              $('<div class="row-caller flex"></div>').append(
+                                $('<img class="avatar" src="https://www.gravatar.com/avatar/' + val.name.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0)  +'?d=robohash" />'),
+                                $('<div class="row-user"></div>').text(val.name)
+                              ),
+                              $('<div class="row-team"></div>').text(val.submission_date),
+                              $('<div class="row-rank"></div>').text((key == 0 ? 'Champion': (key == 1 || key == 2 ? 'Medalist' : 'Just hero'))),
+                              $('<div class="row-calls">231</div>').text(val.score)
+                          )
+                      )
+                  ))
+              });
+          }
+        });
+
+
+         var border = $('#personal-border');
   var userMenu = $('.user-menu');
   var userBlock = $('.user-block');
 
@@ -585,88 +621,30 @@ $(document).ready(function() {
     $('#menu-border').removeClass('animate-border');
     $('#menu-border').addClass('remove-border');
   });
+
+        setTimeout(timer_increment, 30000);
+    }
+
+    setTimeout(timer_increment, 1);
+
+
+
+
 });
 
 </script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 </head>
 
 
 
 <nav class="nav flex">
-  <img class="wordmark" alt="grassrootspb logo" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/225473/grassroots2.svg">
+  <img class="wordmark" alt="grassrootspb logo" src="https://image.ibb.co/eiQXeT/logo.png">
 </nav>
 
 <div class="content">
 
+<div class="leaderboard-body flex column grow">
 
-
-
-    <div class="leaderboard-body flex column grow">
-      <div class="leaderboard-row flex align-center">
-        <div class="row-position">1</div>
-        <div class="row-collapse flex align-center">
-          <div class="row-caller flex">
-            <img class="avatar" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/225473/ruffalo-avatar.png" />
-            <div class="row-user">thebestberniefangirl1967</div>
-          </div>
-          <div class="row-team">Electoral Avengers</div>
-          <div class="row-rank">Superhero</div>
-        </div>
-        <div class="row-calls">1567</div>
-      </div>
-
-      <div class="leaderboard-row flex row-alt align-center">
-        <div class="row-position">2</div>
-        <div class="row-collapse flex align-center">
-          <div class="row-caller flex">
-            <img class="avatar" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/225473/danny-avatar.png" />
-            <p class="row-user">doritosguy</p>
-          </div>
-          <div class="row-team">the trashmen</div>
-          <div class="row-rank">Vice President</div>
-        </div>
-        <div class="row-calls">567</div>
-      </div>
-
-      <div class="leaderboard-row flex align-center">
-        <div class="row-position">3</div>
-        <div class="row-collapse flex align-center">
-          <div class="row-caller flex">
-            <img class="avatar" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/225473/robert-avatar.png" />
-            <div class="row-user">SaveCapitalism</div>
-          </div>
-          <div class="row-team">Common Sense Party</div>
-          <div class="row-rank">Daily Hero</div>
-        </div>
-        <div class="row-calls">231</div>
-      </div>
-
-      <div class="leaderboard-row flex row-alt align-center">
-        <div class="row-position">4</div>
-        <div class="row-collapse flex align-center">
-          <div class="row-caller flex">
-            <img class="avatar" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/225473/killer_mike.png" />
-            <div class="row-user">RunTheJewels</div>
-          </div>
-          <div class="row-team">FeelTheBurn</div>
-          <div class="row-rank">Advocate</div>
-        </div>
-        <div class="row-calls">44</div>
-      </div>
-
-      <div class="leaderboard-row flex align-center">
-        <div class="row-position">5</div>
-        <div class="row-collapse flex align-center">
-          <div class="row-caller flex">
-            <img class="avatar" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/225473/corbyn.png" />
-            <div class="row-user">Brexit at Tiffany's</div>
-          </div>
-          <div class="row-team">Labour Party</div>
-          <div class="row-rank">Councillor</div>
-        </div>
-        <div class="row-calls">10</div>
-      </div>
-
-    </div>
-  </div>
+</div>
+</div>
