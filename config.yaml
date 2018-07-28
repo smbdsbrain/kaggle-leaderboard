@@ -11,4 +11,6 @@ app:
 kaggle:
   user: ''
   key: ''
-  competition: 'asasssa'
+  competition: ''
+
+timezone: Asia/Yekaterinburg
