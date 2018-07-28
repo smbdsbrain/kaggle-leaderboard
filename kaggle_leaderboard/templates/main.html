@@ -560,8 +560,9 @@ $(document).ready(function() {
                                 $('<img class="avatar" src="https://www.gravatar.com/avatar/' + val.name.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0)  +'?d=robohash" />'),
                                 $('<div class="row-user"></div>').text(val.name)
                               ),
-                              $('<div class="row-team"></div>').text(val.submission_date),
                               $('<div class="row-rank"></div>').text((key == 0 ? 'Champion': (key == 1 || key == 2 ? 'Medalist' : 'Just hero'))),
+                              $('<div class="row-team"></div>').text(val.submission_date),
+
                               $('<div class="row-calls">231</div>').text(val.score)
                           )
                       )
