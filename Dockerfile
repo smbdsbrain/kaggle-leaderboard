@@ -5,6 +5,7 @@ WORKDIR "$APP_DIR"
 
 COPY Pipfile Pipfile.lock ./
 RUN pip install pipenv && pipenv install --system
+RUN mkdir /root/.kaggle/
 
 COPY . $APP_DIR/
 

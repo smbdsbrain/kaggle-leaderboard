@@ -117,3 +117,4 @@ data_transform/*.csv
 
 benchmarks/logs/
 data/
+kaggle.json
